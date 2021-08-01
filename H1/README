@@ -1,1 +1,6 @@
-
+Discussion on Non-Admissible Heuristic - H1 :
+H1 is the heuristic which gives-
+a. Cost=-10 if the point for which cost is to be calculated lies on the line joining start-point and end-point.
+b. Distance of point for which cost is to be calculated from the line joining start-point and end-point (Ignoring the square-root term in denominator.)
+H1 can be proved as non-admissible.
+The behavior of H1 is peculiar. It works with the best results in a maze with no obstacle on the line joining start to end. However, in other cases it may not provide optimum solution.
