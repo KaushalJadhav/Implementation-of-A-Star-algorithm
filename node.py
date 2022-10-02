@@ -83,3 +83,4 @@ def init_matrix():
         for j in range(w):
             node_matrix[i,j]=node()
             node_matrix[i,j].position=(i,j)
+    return node_matrix
