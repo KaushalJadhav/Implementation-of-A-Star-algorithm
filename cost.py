@@ -1,6 +1,6 @@
-from defaults import default_cost,sqrt2,rot_cost_180,rot_cost_90,rot_cost_45,rot_cost_135,unit_cost
+from defaults import default_cost,sqrt2,rot_cost_180,rot_cost_90,rot_cost_45,rot_cost_135,unit_cost,diag,cost
 
-def calcCost(point1,point2):
+def calcCost_norm(point1,point2):
     ''' 
     Calculates cost
     '''
@@ -12,7 +12,7 @@ def calcCost(point1,point2):
         return 0.0
     return default_cost        #Heavily penalized
 
-def calcCost_diag(point1,point2):
+def calcCost_diag_norm(point1,point2):
     ''' 
     Calculates cost
     '''
@@ -49,9 +49,9 @@ def calcCost_rot(child,current,start_point,parent=None):
         return default_cost            #Handling outliers
     
     # Start_point will not have any parent. So need separate cases.
-    return calcCost(child,start_point)
+    return calcCost_norm(child,start_point)
 
-def calcCost_rot_diag(child,current,start_point,parent=None): 
+def calcCost_diag_rot(child,current,start_point,parent=None): 
     '''
     Special cost function\n
     based on real runtime situation.\n
@@ -74,4 +74,4 @@ def calcCost_rot_diag(child,current,start_point,parent=None):
         return default_cost            #Handling outliers
     
     # Start_point will not have any parent. So need separate cases.
-    return calcCost(child,start_point)
+    return calcCost_norm(child,start_point)

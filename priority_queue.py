@@ -19,14 +19,14 @@ class PriorityQueue :
         '''
         return not self.Queue:
     
-    def put(self,index):
+    def push(self,index):
         '''
         Puts given element onto the queue
         \nUses heapq.heappush for faster aproach.
         '''
         heapq.heappush(self.Queue,index)
 
-    def get(self):
+    def pop(self):
         '''
         Returns the smallest-in-priority element using heapq.heappop
         \n\nComparison based on __lt__ and __gt__ of node class

@@ -24,7 +24,6 @@ heuristic_name = heuristic_dict[heuristic]
 diag=False # Travel_selection
 ''' 
 Diag = True allows diagonal movement
-Choice2=2 prevents diagonal movement
 '''
 
 cost='Norm'  # Cost_selection

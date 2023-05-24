@@ -1,5 +1,8 @@
+import numpy as np
+import time
 import cv2 as cv
 from defaults import ob_color
+
 #Read Image
 def read_image(img_path):
     return cv2.imread(img_path,cv2.IMREAD_COLOR)
@@ -8,7 +11,7 @@ def get_start_end(img,start_color,end_color):
     #Find start point and end point
     start = np.where(np.any(img==start_color,axis=2))
     end = np.where(np.any(img==end_color,axis=2))
-    retuen start,end
+    return start,end
 
 def calcSlope(point1,point2):
     return (point2[1]-point1[1])/(point2[0]-point1[0])
@@ -21,6 +24,8 @@ def chk_colinear(start,end,p):
         return a*point1[0]+b*point1[1]+c
     except:
         raise Exception("startpt and endpt must be indexable and cannot be None ")
+
+def is_end_pt
 
 #check for navigation path
 def isinrange(img,position):
@@ -75,3 +80,14 @@ def documentation(visited_list,parent_list,val,cost,start,end,option):
     if(option==1):
      #close file
      w.close()
+
+
+class Timer(object):
+    def __init__(self):
+        pass
+    def begin(self):
+        self.beg = time.begin()
+    def finish(self):
+        self.fin = time.finish()
+    def _print(self):
+        print("")

@@ -19,6 +19,11 @@ import heapq
 import time
 #to measure time
 
+from node import node,init_matrix,get_nbd
+from priority_queue import PriorityQueue
+from heustics import calcHeuristic
+from utils import Timer
+
 
 '''
 Why use heap?
@@ -34,10 +39,6 @@ Earlier attempt was to use a list/collection of nodes and find out the minimum. 
 '''
 
 
-#Calculate image size before search
-h,w,c = img.shape
-
-
 
 #main function
 def astar(img,startpt,endpt):
@@ -51,6 +52,8 @@ def astar(img,startpt,endpt):
 
     h,w,c=img.shape
 
+    node_matrix = init_matrix()
+
     #create priority queue 
     pt_list=PriorityQueue()
     
@@ -60,17 +63,18 @@ def astar(img,startpt,endpt):
     start.f=start.h=calcHeuristic(start.position,endpt)
     start.isvisted=True
     node_matrix[startpt]=start
-    pt_list.put(start)
+    pt_list.push(start)
 
     #Start Traversing
-    beg=time.time()
+    timer = Timer()
+    timer.begin()
 
 
     while(not pt_list.isempty()):
 
         #while the list is not empty obtain the node with smallest f
 
-        current=pt_list.get()
+        current=pt_list.pop()
 
         #Now that current node is not in the list change the corresponding chkpts
 
@@ -120,7 +124,7 @@ def astar(img,startpt,endpt):
                     nbd.h=calcHeuristic(nbd.position,endpt)
                     nbd.f=nbd.g+nbd.h
                     nbd.is_in_list=True
-                    pt_list.put(nbd)
+                    pt_list.push(nbd)
 
                 # if the nbd node is not current- then put the nbd node in the pt_list (if it is not there) along with setting the chk_points.
                 else:
@@ -129,7 +133,7 @@ def astar(img,startpt,endpt):
                     nbd.h=calcHeuristic(nbd.position,endpt)
                     nbd.f=nbd.g+nbd.h
                     if(not nbd.is_in_list):
-                        pt_list.put(nbd)
+                        pt_list.push(nbd)
                     nbd.is_in_list=True
                     nbd.is_current=False
 

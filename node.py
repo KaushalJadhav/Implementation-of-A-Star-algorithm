@@ -77,10 +77,9 @@ def get_nbd(current,choice):
     return l
 
 # create a matrix of objects
-def init_matrix():
-    node_matrix=np.empty((h,w),dtype=object)
+def init_matrix(h,w):
+    node_matrix=np.empty((h,w),dtype=node)
     for i in range(h):
         for j in range(w):
-            node_matrix[i,j]=node()
             node_matrix[i,j].position=(i,j)
     return node_matrix
